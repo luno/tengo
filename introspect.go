@@ -646,12 +646,12 @@ var reColumnNameFromLine = regexp.MustCompile("^\\s*`((?:[^`]|``)+)`")
 
 // This function manipulates the SHOW CREATE text to normalize some weirdness
 // from MySQL 8.0:
-// * 8.0 includes column-level character sets and collations whenever specified
-//   explicitly in the original CREATE, even when equal to the table's defaults
-// * Tables upgraded from pre-8.0 may omit COLLATE if it's the default for the
-//   charset, while tables created in 8.0 will include it
-// * 8.0.24+ uses "utf8mb3" for table-level default in place of "utf8", but
-//   doesn't do this for columns
+//   - 8.0 includes column-level character sets and collations whenever specified
+//     explicitly in the original CREATE, even when equal to the table's defaults
+//   - Tables upgraded from pre-8.0 may omit COLLATE if it's the default for the
+//     charset, while tables created in 8.0 will include it
+//   - 8.0.24+ uses "utf8mb3" for table-level default in place of "utf8", but
+//     doesn't do this for columns
 func fixShowCreateCharSets(t *Table, flavor Flavor) {
 	// Find columns with unnecessary charset+collation clause, and replace with
 	// either blank string (if collation is default for the charset) or just the

@@ -117,5 +117,4 @@ func TestDocker(t *testing.T) {
 	if err := di.Stop(); err == nil {
 		t.Error("Expected error trying to stop a destroyed container, instead got nil")
 	}
-
 }

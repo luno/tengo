@@ -236,7 +236,6 @@ func TestFlavorAlwaysShowTableCollation(t *testing.T) {
 			t.Errorf("Expected %s.AlwaysShowCollation(%s) to return %t, instead found %t", tc.receiver, tc.charSet, tc.expected, actual)
 		}
 	}
-
 }
 
 func TestFlavorGeneratedColumns(t *testing.T) {
@@ -313,5 +312,4 @@ func TestOmitIntDisplayWidth(t *testing.T) {
 			t.Errorf("Expected %s.OmitIntDisplayWidth() to return %t, instead found %t", tc.receiver, tc.expected, actual)
 		}
 	}
-
 }

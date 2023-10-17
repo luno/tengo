@@ -229,5 +229,4 @@ func TestIndexComparisonNil(t *testing.T) {
 	if idx1.RedundantTo(idx1) {
 		t.Error("Expected nil.RedundantTo(nil) to return false, but it returned true")
 	}
-
 }
