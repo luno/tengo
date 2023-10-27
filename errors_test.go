@@ -30,7 +30,6 @@ func (s TengoIntegrationSuite) TestIsSyntaxError(t *testing.T) {
 	_, err = db.Exec("ALTER TAABBEL actor ENGINE=InnoDB")
 	if err == nil {
 		t.Error("Bad syntax still returned nil error unexpectedly")
-
 	} else if !IsSyntaxError(err) {
 		t.Errorf("Error of type %T %+v unexpectedly not considered syntax error", err, err)
 	}
