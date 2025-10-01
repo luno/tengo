@@ -301,6 +301,9 @@ func (di *DockerizedInstance) NukeData() error {
 // typically a mix of DML and/or DDL statements. It is useful as a per-test
 // setup method in implementations of IntegrationTestSuite.BeforeTest.
 func (di *DockerizedInstance) SourceSQL(filePath string) (string, error) {
+	if strings.Contains(filePath, "../") || strings.Contains(filePath, "..\\") {
+		return "", fmt.Errorf("Invalid file path")
+	}
 	f, err := os.Open(filePath)
 	if err != nil {
 		return "", fmt.Errorf("SourceSQL %s: Unable to open setup file %s: %s", di, filePath, err)
